@@ -1,0 +1,48 @@
+label,input,select,textarea {
+    display: block;
+    margin-bottom: 10px;
+}
+textarea{
+    height: 70px;
+}
+input[type="text"],
+input[type="email"],
+textarea[name="message"] {
+    width: 100%;
+    border: 1px solid #8b949e;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+body{
+    display: flex;
+    font-family: 'Poppins',sans-serif;
+    background-color: #f7efef;
+    justify-content: center;
+    padding-top: 150px;
+
+}
+
+li{
+    list-style-type: none;
+}
+
+ul{
+    position: relative;
+    width: 300px;
+    padding: 20px;
+    margin: 40px auto;
+    border: 3px solid #e4dede; 
+    border-radius: 15px; 
+    background-color: #ffffff;
+}
+
+button{
+    padding: 10px 70px;               
+    background-color: #3182ce;       
+    color: white;                    
+    border: none;                    
+    border-radius: 8px;               
+    font-size: 16px;                  
+    font-family: 'Poppins',sans-serif;
+}

@@ -1,0 +1,320 @@
+/* ---------- Base & variables ---------- */
+:root{
+  --bg-1: #000308;
+  --bg-2: #000307;
+  --panel: rgba(255,255,255,0.55);
+  --glass-blur: 8px;
+  --accent: #2b7cff;
+  --accent-2: #6ad1ff;
+  --danger: #ff5c57;
+  --success: #2ecc71;
+  --shadow: 0 10px 30px rgba(20,30,50,0.12);
+  --board-gap: 8px;
+  --square-size: 44px; /* tamaño base, puede escalar con media queries */
+  --radius: 12px;
+  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* ---------- Page background ---------- */
+html,body,#root{
+  height: 100%;
+}
+body{
+  margin: 0;
+  font-family: var(--font-sans);
+  background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  color: #0e1724;
+}
+
+/* ---------- App container ---------- */
+.app-container {
+  width: 100%;
+  max-width: 1080px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Mobile single column */
+@media (max-width: 880px) {
+  .app-container { grid-template-columns: 1fr; padding: 16px; }
+}
+
+/* ---------- Left panel: controls / display ---------- */
+.panel {
+  background: var(--panel);
+  backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Title / Display */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: #0b2545;
+}
+
+.display {
+  background: rgba(255,255,255,0.85);
+  padding: 12px 14px;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 6px rgba(10,20,30,0.04);
+  text-align: center;
+  font-weight: 600;
+  color: #0b2545;
+}
+
+/* Controls (buttons & difficulty) */
+.controls {
+  display:flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display:flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  background: linear-gradient(180deg,#ffffff,#f2f7ff);
+  box-shadow: 0 6px 18px rgba(16,34,66,0.06);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.btn:active { transform: translateY(1px); }
+.btn:focus { outline: 3px solid rgba(43,124,255,0.18); }
+
+.btn-primary {
+  background: linear-gradient(180deg,var(--accent),#1560d6);
+  color: white;
+  box-shadow: 0 8px 24px rgba(43,124,255,0.18);
+}
+
+.difficulty-group {
+  display:flex;
+  gap:8px;
+}
+
+.difficulty {
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.65);
+  border-radius: 8px;
+  border: 1px solid rgba(10,20,40,0.03);
+  cursor: pointer;
+  font-weight: 600;
+}
+.difficulty.active {
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color: white;
+  box-shadow: 0 8px 18px rgba(43,124,255,0.12);
+}
+
+/* ---------- Right panel: board container ---------- */
+.board-wrapper {
+  display:flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* board header / info */
+.board-info {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+}
+
+.counter {
+  background: #111827;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  min-width: 72px;
+  text-align:center;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.25);
+}
+
+/* ---------- THE BOARD GRID ---------- */
+/* Use CSS variable --cols to set columns dynamically from React:
+   <div class="board" style={{ ['--cols']: size }}></div>
+*/
+.board {
+  --cols: 8; /* default, override inline from React */
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: var(--board-gap);
+  padding: var(--board-gap);
+  background: rgba(255,255,255,0.55);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  align-self: start;
+}
+
+/* Make board responsive: adjust square size depending on available width */
+.board {
+  width: calc(var(--cols) * var(--square-size) + (var(--cols) - 1) * var(--board-gap) + 2 * var(--board-gap));
+  max-width: 100%;
+}
+
+/* Square: recommend using <button class="square"> for accessibility */
+.square, button.square {
+  --size: var(--square-size);
+  width: var(--size);
+  height: var(--size);
+  display: inline-grid;
+  place-items: center;
+  border-radius: 10px;
+  background: linear-gradient(180deg,#f8fbff,#eef6ff);
+  border: 1px solid rgba(10,25,55,0.06);
+  cursor: pointer;
+  font-weight: 700;
+  color: #12325a;
+  user-select: none;
+  transition: transform .08s ease, box-shadow .12s ease, background .12s ease;
+  box-shadow: 0 6px 14px rgba(16,34,66,0.06);
+  position: relative;
+}
+
+/* Closed look (default tapped) */
+.square:not(.discovered) {
+  background: linear-gradient(180deg,#e6eefc,#dfeeff);
+  border: 1px solid rgba(15,40,80,0.06);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,0.6),
+    0 6px 12px rgba(8,20,40,0.06);
+}
+
+/* Pressed / active */
+.square:active:not(.discovered) { transform: translateY(1px) scale(.997); }
+
+/* Discovered / revealed */
+.square.discovered {
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  border: 1px solid rgba(10,20,40,0.04);
+  box-shadow: inset 0 1px 0 rgba(0,0,0,0.02);
+  cursor: default;
+  color: #12325a;
+}
+
+/* Flagged */
+.square.flagged::after {
+  content: "🚩";
+  font-size: 0.95rem;
+  transform: translateY(-2px);
+}
+
+/* Mine when revealed (use .mine when exposing a bomb) */
+.square.mine::after {
+  content: "💣";
+  font-size: 1.05rem;
+}
+
+/* If you want a hidden mine (on loss show unflagged mines) */
+.square.revealed-mine {
+  background: linear-gradient(180deg,#fff6f6,#ffecec);
+  border: 1px solid rgba(255,92,87,0.12);
+  color: var(--danger);
+  box-shadow: 0 10px 20px rgba(255,92,87,0.08);
+}
+
+/* Number colors (1-8). Use attribute data-number on the element or class .n1 .. .n8 */
+.square[data-number="1"], .square.n1 { color: #0b5cff; }
+.square[data-number="2"], .square.n2 { color: #0b9e3f; }
+.square[data-number="3"], .square.n3 { color: #ff5c57; }
+.square[data-number="4"], .square.n4 { color: #7a2cff; }
+.square[data-number="5"], .square.n5 { color: #c15800; }
+.square[data-number="6"], .square.n6 { color: #008b9e; }
+.square[data-number="7"], .square.n7 { color: #333; }
+.square[data-number="8"], .square.n8 { color: #666; }
+
+/* If discovered and number = 0, show empty */
+.square.discovered[data-number="0"] {
+  color: transparent;
+}
+
+/* Hover only for not discovered */
+.square:not(.discovered):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(8,20,40,0.08);
+}
+
+/* ---------- Win/Lose Modal ---------- */
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) scale(0.98);
+  background: rgba(255,255,255,0.95);
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 24px 48px rgba(8,20,40,0.18);
+  min-width: 280px;
+  z-index: 9999;
+  transition: transform .14s ease, opacity .12s ease;
+}
+
+.modal.show { transform: translate(-50%,-50%) scale(1); }
+
+.modal h2 { margin: 0 0 8px 0; font-size: 1.25rem; }
+.modal p { margin: 0 0 14px 0; color: #334155; }
+
+/* modal buttons */
+.modal .actions {
+  display:flex;
+  gap:10px;
+  justify-content:flex-end;
+}
+
+/* ---------- Footer / small screens ---------- */
+.footer {
+  margin-top: 12px;
+  text-align: center;
+  color: rgba(5,20,40,0.6);
+  font-size: 0.9rem;
+}
+
+/* ---------- Utility / accessibility ---------- */
+.hidden { display:none !important; }
+.visually-hidden { position:absolute !important; clip:rect(0 0 0 0); width:1px; height:1px; overflow:hidden; }
+
+.board[aria-busy="true"] { opacity: .6; pointer-events: none; filter: blur(.2px); }
+
+/* ---------- Scaling rules ---------- */
+@media (max-width: 520px) {
+  :root { --square-size: 40px; --board-gap: 6px; }
+  .panel { padding: 14px; }
+  .title { font-size: 1.1rem; }
+}
+@media (max-width: 360px) {
+  :root { --square-size: 34px; }
+}

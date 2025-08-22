@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portfolio de Sebas</title>
+        <meta name="theme-color" content="#09f">
+
+        <link rel="icon" type="image/png" href="/images/maleta.png" sizes="16x16" />
+        <link rel="alternate" href="https://sebas.dev/en" hreflang="en-GB" />
+        <link rel="alternate" href="https://sebas.dev/es" hreflang="es-MX" />
+        <link rel="canonical" href="https://sebas.dev"/>
+
+        <style>
+            body {
+                background: rgba(112, 209, 238, 0.938);
+            }
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <h1>Portfolio de Sebas</h1>
+            <nav>
+                <a href="#experiencia">Experiencia</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#habilidades">Habilidades</a>
+            </nav>
+        </header>
+
+        <main>
+            <p>Soy un estudiante de cuarto año en <strong>Ingeniería Civil Informática</strong> en la <strong>Universidad del Bío-Bío</strong>, y este es mi portafolio.
+                Aquí encontrarás información sobre mis proyectos y habilidades.
+            </p>
+
+            <section id="experiencia">
+                <h2>Experiencia Laboral</h2>
+                <h3>Práctica Profesional</h3>
+                <p style="font-style: italic;">Diciembre 2024 - Marzo 2025</p>
+                <p>Trabajé en el área de desarrollo de aplicaciones con realidad aumentada (RA) y realidad virtual (RV). Utilicé Vuforia en Unity para implementar soluciones de RA,
+                    lo que me permitió desarrollar habilidades en programación y optimización de experiencias inmersivas.
+                    Además, adquirí experiencia en modelado 3D con Blender, creando y adaptando modelos para su integración en entornos interactivos.
+                </p>
+            </section>
+
+            <section id="proyectos">
+                <h2>Proyectos</h2>
+                <ul>
+                    <li class="list-item">Creación de una aplicación móvil en Unity con realidad aumentada (2025)</li>
+                    <li class="list-item">Creación de una aplicación móvil en Unity con realidad virtual (2025)</li>
+                    <li class="list-item">Creación de una aplicación web en React (2025)</li>
+                </ul>
+            </section>
+
+            <section>
+                <article>
+                    <h3>Aplicación móvil en Unity con realidad aumentada</h3>
+                    <p>En este proyecto se nos pidió implementar una especie de Cubo Merge, el cual consistía en utilizar seis imágenes diferentes. El objetivo era que, al escanearlas con la aplicación de realidad aumentada, se visualizaran modelos 3D de diversas maquinarias.
+                        Además, se nos solicitó la implementación de Funko Pops y una mascota llamada Forestín dentro de la experiencia.</p>
+                    <video loop width="200" height="400" controls>
+                        <source src="Video FunkoPops ‐ Hecho con Clipchamp.mp4" type="video/mp4">
+                    </video>
+                </article>
+
+                <article>
+                    <h3>Aplicación móvil en Unity con realidad Virtual</h3>
+                    <p>Desarrollo de una experiencia inmersiva en realidad virtual con un entorno forestal interactivo. Este proyecto permite a los usuarios aprender sobre las máquinas forestales utilizadas en la industria, los uniformes específicos de los trabajadores
+                        y las mejores prácticas en el trozado y corte de árboles. A través de la simulación, se busca ofrecer una experiencia educativa y realista que combine aprendizaje y exploración en un entorno virtual detallado.</p>
+                    <video loop width="200" height="400" controls>
+                        <source src="Video FunkoPops ‐ Hecho con Clipchamp.mp4" type="video/mp4">
+                    </video>
+                </article>
+            </section>
+
+            <section id="habilidades">
+                <h2>Habilidades Técnicas</h2>
+                <hr>
+                <h3>Lenguajes de Programación:</h3>
+                <ul>
+                    <li>C (Basico)</li>
+                    <li>Java (Basico)</li>
+                    <li>SQL (Intermedio)</li>
+                    <li>Python (Básico)</li>
+                    <li>C# (Intermedio)</li>
+                </ul>
+
+                <h3>Herramientas:</h3>
+                <ul>
+                    <li>Manejo de herramientas informáticas y básicas para desarrollo de software.</li>
+                    <li>IDEs (Visual Studio Code, NetBeans), MySQL, Apache, Matlab.</li>
+                    <li>Modelado de datos e información.</li>
+                    <li>Realidad Aumentada y Realidad Virtual en Unity.</li>
+                    <li>Modelado 3D básico en Blender.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Formulario de Contacto</h2>
+                <form method="post" action="/">
+                    <fieldset>
+                        <legend>Información Personal</legend>
+                        <label>Nombre:
+                            <input type="text" name="name" placeholder="Magdiel Fernández" required>
+                        </label>
+                        <label style='display: block;'>Email:
+                            <input type="email" name="email" placeholder="Ejemplo@gmail.com" required>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Teléfono</legend>
+                        <label>Teléfono:
+                            <input type="tel" name="telefono" placeholder="" required>
+                        </label>
+                    </fieldset>
+                    <input type="submit" value="Enviar Contacto">
+                </form>
+            </section>
+        </main>
+    </body>
+</html>

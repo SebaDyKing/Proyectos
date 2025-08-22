@@ -1,0 +1,81 @@
+body{
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color : #2c2c2c;
+    overflow: hidden;
+    
+}
+.Contacto{
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 400px;
+    gap: px;    
+}
+.rol{
+    font-size: 15px;
+    margin: 0 0 0px 60%;
+    color : white;
+    width: 150px;
+}
+.Nombre{
+font-size: 20px;
+color : yellow;
+margin: 100px 0 0px 60%;
+
+}
+.circulo{
+    width: 450px;
+    height: 450px;
+    background-color: yellow;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+}
+
+.circulo a {
+    color: black; /* el link también en negro */
+    text-decoration: none;
+}
+
+.circulo_centro {
+    background-color: #d4af00; /* color más oscuro */
+    transform: scale(1.2);
+    z-index: 2;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    
+}
+.item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color : white;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    margin-left: -40px;
+}
+
+.item p {
+    margin-top: 10px;
+    color: white;
+    font-size: 100px;
+}
